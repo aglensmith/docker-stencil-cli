@@ -1,19 +1,19 @@
 # docker-stencil-cli
-Docker file for BigCommerce's Stencil CLI
+Dockerfile for BigCommerce's Stencil CLI
 
-## Usage
-
-**Build and run:**
+## Installation
 
 ```bash
 # build docker image
 docker build -t docker-stencil https://github.com/aglensmith/docker-stencil-cli.git
+```
 
-# move into theme dir
+## Usage
+
+```bash
 cd ~/theme/dir
 
-# run image with interactive shell
-sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil /bin/bash
+sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil stencil start
 ```
 
 | Option           | Description                                                    |                                                                
@@ -21,13 +21,9 @@ sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil /bin/bash
 |`-it`             |Keep STDIN open even if not attached, allocate a pseudo-TTY     |
 |`-v $(pwd):/theme`|Mount host's current working directory to container WORKDIR     |
 |`-p3000:3000`     |Expose stencil's default port to localhost                      |
-|`/bin/bash`       |Specify bash as the shell to use so we can run stencil commands |
 
-
-**In the container's bash shell, run:**
+Or start in a bash shell:
 
 ```bash
-stencil init
-
-stencil start
+sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil /bin/bash
 ```
