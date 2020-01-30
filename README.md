@@ -3,11 +3,11 @@ Docker file for BigCommerce's Stencil CLI
 
 ## Usage
 
-Build and run:
+**Build and run:**
 
 ```bash
 # build docker image
-docker build -t docker-stencil github.com/aglensmith/docker-stencil.git
+docker build -t docker-stencil https://github.com/aglensmith/docker-stencil-cli.git
 
 # move into theme dir
 cd ~/theme/dir
@@ -24,9 +24,9 @@ sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil /bin/bash
 |`/bin/bash`       |Specify bash as the shell to use so we can run stencil commands |
 
 
-In the container's bash shell, run:
+**In the container's bash shell, run:**
 
-``bash
+```bash
 stencil init
 
 stencil start
