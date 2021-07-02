@@ -1,5 +1,7 @@
+# Use dockerfile.v2 instead: https://raw.githubusercontent.com/aglensmith/docker-stencil-cli/master/dockerfile.v2
+
 # use official node parent image
-FROM node:10
+FROM node:12
 
 # set container working directory
 WORKDIR /theme

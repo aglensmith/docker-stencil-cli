@@ -1,29 +1,59 @@
 # docker-stencil-cli
-Dockerfile for BigCommerce's Stencil CLI
 
-## Installation
+An unofficial [dockerfile](https://docs.docker.com/engine/reference/builder/) for BigCommerce's [Stencil CLI](https://github.com/bigcommerce/stencil-cli).
+
+## Build
 
 ```bash
 # build docker image
-docker build -t docker-stencil https://github.com/aglensmith/docker-stencil-cli.git
+docker build -t stencil https://raw.githubusercontent.com/aglensmith/docker-stencil-cli/master/dockerfile.v2
 ```
 
-## Usage
+## Run
+
+**OSX and Linux**:
 
 ```bash
-cd ~/theme/dir
+# stencil init
+docker run -it -v $(pwd):/theme -p3000:3000 stencil init
 
-sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil stencil start
+# stencil start
+docker run -it -v $(pwd):/theme -p3000:3000 stencil start
 ```
 
-| Option           | Description                                                    |                                                                
-|------------------|----------------------------------------------------------------|
-|`-it`             |Keep STDIN open even if not attached, allocate a pseudo-TTY     |
-|`-v $(pwd):/theme`|Mount host's current working directory to container WORKDIR     |
-|`-p3000:3000`     |Expose stencil's default port to localhost                      |
-
-Or start in a bash shell:
+**Windows (bash)**:
 
 ```bash
-sudo docker run -it -v $(pwd):/theme -p3000:3000 docker-stencil /bin/bash
+# stencil init
+docker run -it -v /$(PWD):/theme -p3000:3000 stencil init
+
+# stencil start
+docker run -it -v /$(PWD):/theme -p3000:3000 stencil start
+```
+
+## .bashrc entry
+
+Open `~/.bashrc` in your preferred editor and add an `alias` for the docker command.
+
+**OSX and Linux:**
+```bash
+alias stencil="docker run -it -v $(pwd):/theme -p3000:3000 stencil"
+```
+
+**Windows**:
+
+```bash
+alias stencil="docker run -it -v /$(PWD):/theme -p3000:3000 stencil"
+```
+
+Reload your `~/.bashrc`.
+
+```bash
+source ~/.bashrc
+```
+
+Now you can use the `stencil` alias to run the docker command.
+
+```bash
+stencil start
 ```
